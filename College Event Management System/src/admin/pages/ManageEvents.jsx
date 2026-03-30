@@ -8,7 +8,7 @@ export default function ManageEvents({ navigateTo }) {
 
   const fetchEvents = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/events');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/events`);
       const result = await res.json();
       if (result.success) setEvents(result.data);
     } catch (err) { console.error(err); }
@@ -20,7 +20,7 @@ export default function ManageEvents({ navigateTo }) {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this event?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/events/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/events/${id}`, { method: 'DELETE' });
       if (res.ok) fetchEvents();
       else alert('Failed to delete event.');
     } catch (err) { alert('Network error.'); }
@@ -81,3 +81,5 @@ export default function ManageEvents({ navigateTo }) {
     </div>
   );
 }
+
+

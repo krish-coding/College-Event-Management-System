@@ -31,7 +31,7 @@ export default function RegisterEventPage({ navigateTo, user }) {
       createdBy: user ? user._id : null
     };
     try {
-      const response = await fetch('http://localhost:5000/api/events', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/events`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newEvent),
       });
       const result = await response.json();
@@ -159,3 +159,5 @@ export default function RegisterEventPage({ navigateTo, user }) {
     </div>
   );
 }
+
+

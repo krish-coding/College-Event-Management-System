@@ -9,7 +9,7 @@ export default function ManageStudents({ navigateTo }) {
   React.useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/users');
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users`);
         const result = await res.json();
         if (result.success) setStudents(result.data);
       } catch (err) { console.error(err); }
@@ -60,7 +60,7 @@ export default function ManageStudents({ navigateTo }) {
                   <button onClick={async () => {
                     if (!window.confirm('Delete this student?')) return;
                     try {
-                      await fetch(`http://localhost:5000/api/users/${student._id}`, { method: 'DELETE' });
+                      await fetch(`${import.meta.env.VITE_API_URL}/api/users/${student._id}`, { method: 'DELETE' });
                       setStudents(students.filter(s => s._id !== student._id));
                     } catch (e) {}
                   }} className="text-gray-400 hover:text-red-600 p-1 mx-1 transition-colors"><Trash2 className="h-4 w-4" /></button>
@@ -74,3 +74,5 @@ export default function ManageStudents({ navigateTo }) {
     </div>
   );
 }
+
+

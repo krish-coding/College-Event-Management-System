@@ -16,7 +16,7 @@ export default function EventsPage({ navigateTo, setSelectedEvent }) {
   const categories = ['All', 'Technical', 'Cultural', 'Sports', 'Workshop', 'Business'];
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/events')
+    fetch(`${import.meta.env.VITE_API_URL}/api/events`)
       .then(res => { if (!res.ok) throw new Error('Network error'); return res.json(); })
       .then(data => {
         if (data.success) setAllEvents(data.data.filter(e => e.status === 'Published'));
@@ -96,3 +96,5 @@ export default function EventsPage({ navigateTo, setSelectedEvent }) {
     </div>
   );
 }
+
+
