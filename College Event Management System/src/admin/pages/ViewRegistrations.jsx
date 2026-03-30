@@ -8,7 +8,7 @@ export default function ViewRegistrations({ navigateTo }) {
 
   const fetchRegs = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/registrations');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/registrations`);
       const result = await res.json();
       if (result.success) setRegs(result.data);
     } catch (err) { console.error(err); }
@@ -20,7 +20,7 @@ export default function ViewRegistrations({ navigateTo }) {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this registration?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/registrations/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/registrations/${id}`, { method: 'DELETE' });
       if (res.ok) fetchRegs();
       else alert('Failed to delete registration.');
     } catch (err) { alert('Network error.'); }
@@ -84,3 +84,5 @@ export default function ViewRegistrations({ navigateTo }) {
     </div>
   );
 }
+
+

@@ -12,8 +12,8 @@ export default function MyEventsPage({ navigateTo, user }) {
     const fetchMyEvents = async () => {
       try {
         const [regRes, eventRes] = await Promise.all([
-          fetch(`http://localhost:5000/api/registrations?userId=${user._id}`),
-          fetch('http://localhost:5000/api/events')
+          fetch(`${import.meta.env.VITE_API_URL}/api/registrations?userId=${user._id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/api/events`)
         ]);
         const regData = await regRes.json();
         const eventData = await eventRes.json();
@@ -134,3 +134,5 @@ export default function MyEventsPage({ navigateTo, user }) {
     </div>
   );
 }
+
+

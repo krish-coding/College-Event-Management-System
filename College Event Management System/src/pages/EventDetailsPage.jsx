@@ -106,7 +106,7 @@ export default function EventDetailsPage({ navigateTo, event, user }) {
                   if (!user) { alert('Please log in to register for events.'); navigateTo('Login'); return; }
                   setIsRegistering(true);
                   try {
-                    const res = await fetch('http://localhost:5000/api/registrations', {
+                    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/registrations`, {
                       method: 'POST', headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({ userId: user._id, eventId: event._id })
                     });
@@ -127,3 +127,5 @@ export default function EventDetailsPage({ navigateTo, event, user }) {
     </div>
   );
 }
+
+
