@@ -4,7 +4,7 @@ import { CalendarDays, MapPin, ArrowRight, Loader2 } from 'lucide-react';
 const fallbackEvents = [
   { _id: '1', title: 'TechNova Hackathon 2026', date: '2026-10-15T18:00:00.000Z', time: '18:00', location: 'Main Computer Lab', category: 'Technical', price: 'Free', status: 'Published', description: 'Testing the backend connection', organizer: 'Computer Science Department', totalCapacity: 250, spotsFilled: 184 },
   { _id: '2', title: 'Rhythm & Beats: Cultural Night', date: '2026-11-02T18:00:00.000Z', time: '19:00', location: 'University Auditorium', category: 'Cultural', price: 'Student ID', status: 'Published', description: 'Annual cultural fest with exciting performances.', organizer: 'Cultural Committee', totalCapacity: 500, spotsFilled: 420 },
-  { _id: '3', title: 'RoboWars Championship', date: '2026-12-10T10:00:00.000Z', time: '10:00', location: 'Engineering Block Plaza', category: 'Technical', price: '$10 Entry', status: 'Published', description: 'Battle of the bots. Join us for the ultimate showdown.', organizer: 'Robotics Club', totalCapacity: 100, spotsFilled: 45 },
+  { _id: '3', title: 'RoboWars Championship', date: '2026-12-10T10:00:00.000Z', time: '10:00', location: 'Engineering Block Plaza', category: 'Technical', price: '?10 Entry', status: 'Published', description: 'Battle of the bots. Join us for the ultimate showdown.', organizer: 'Robotics Club', totalCapacity: 100, spotsFilled: 45 },
 ];
 
 export default function HomePage({ navigateTo, setSelectedEvent }) {
@@ -23,6 +23,10 @@ export default function HomePage({ navigateTo, setSelectedEvent }) {
   }, []);
 
   const formatDate = (dateString) => new Date(dateString).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const formatPrice = (price) => {
+    if (!price) return 'Free';
+    return price.replace(/\$(\d+(\.\d+)?)/g, '₹$1');
+  };
 
   return (
     <div className="animate-in fade-in duration-500">
@@ -75,7 +79,7 @@ export default function HomePage({ navigateTo, setSelectedEvent }) {
                   onClick={() => { setSelectedEvent(event); navigateTo('Event Details'); }}>
                   <div className="relative h-48 overflow-hidden bg-gray-100">
                     <img src={event.image || `https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800&sig=${event._id}`} alt={event.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-gray-900 shadow-sm">{event.price || 'Free'}</div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-gray-900 shadow-sm">{formatPrice(event.price)}</div>
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors line-clamp-2">{event.title}</h3>
@@ -96,5 +100,6 @@ export default function HomePage({ navigateTo, setSelectedEvent }) {
     </div>
   );
 }
+
 
 

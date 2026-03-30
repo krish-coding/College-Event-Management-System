@@ -19,6 +19,10 @@ export default function EventDetailsPage({ navigateTo, event, user }) {
   const spotsLeft = event.totalCapacity - (event.spotsFilled || 0);
   const fillPercentage = ((event.spotsFilled || 0) / event.totalCapacity) * 100;
   const fallbackImage = `https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&q=80&w=1200&sig=${event._id}`;
+  const formatPrice = (price) => {
+    if (!price) return 'Free';
+    return price.replace(/\$(\d+(\.\d+)?)/g, '₹$1');
+  };
 
   return (
     <div className="bg-gray-50 min-h-screen pb-20 animate-in fade-in duration-500">
@@ -81,7 +85,7 @@ export default function EventDetailsPage({ navigateTo, event, user }) {
               <div className="flex justify-between items-center mb-6 border-b border-gray-100 pb-6">
                 <div>
                   <p className="text-sm text-gray-500 font-medium mb-1">Price</p>
-                  <p className="text-3xl font-extrabold text-gray-900">{event.price || 'Free'}</p>
+                  <p className="text-3xl font-extrabold text-gray-900">{formatPrice(event.price)}</p>
                 </div>
                 <div className="flex space-x-2">
                   <button className="p-2.5 rounded-full bg-gray-50 text-gray-600 hover:text-red-500 hover:bg-red-50 transition-colors border border-gray-200"><Heart className="h-5 w-5" /></button>
@@ -127,5 +131,6 @@ export default function EventDetailsPage({ navigateTo, event, user }) {
     </div>
   );
 }
+
 
 
