@@ -21,6 +21,11 @@ mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB successfully!'))
   .catch((err) => console.error('❌ MongoDB connection error:', err));
 
+// Health route
+app.get('/', (req, res) => {
+  res.send('Backend is running');
+});
+
 // Mount Routes
 app.use('/api/events', eventRoutes);
 app.use('/api/auth', authRoutes);
