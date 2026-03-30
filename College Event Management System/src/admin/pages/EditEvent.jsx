@@ -8,7 +8,7 @@ export default function EditEvent({ navigateTo, editId }) {
   React.useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/events`);
+        const res = await fetch('http://localhost:5000/api/events');
         const result = await res.json();
         if (result.success) { const ev = result.data.find(e => e._id === editId); if (ev) setEventData(ev); }
       } catch (err) { console.error('Error fetching event'); }
@@ -28,7 +28,7 @@ export default function EditEvent({ navigateTo, editId }) {
       description: formData.get('description')
     };
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/events/${editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updated) });
+      const res = await fetch(`http://localhost:5000/api/events/${editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updated) });
       if (res.ok) { alert('✅ Event Updated Successfully!'); navigateTo('Manage Events'); }
       else alert('❌ Failed to update event.');
     } catch (err) { alert('Network error'); }
@@ -113,5 +113,3 @@ export default function EditEvent({ navigateTo, editId }) {
     </div>
   );
 }
-
-

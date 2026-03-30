@@ -8,7 +8,7 @@ export default function EditRegistration({ navigateTo, editId }) {
   React.useEffect(() => {
     const fetchReg = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/registrations`);
+        const res = await fetch('http://localhost:5000/api/registrations');
         const result = await res.json();
         if (result.success) { const reg = result.data.find(r => r._id === editId); if (reg) setRegData(reg); }
       } catch (err) { console.error('Error fetching registration'); }
@@ -21,7 +21,7 @@ export default function EditRegistration({ navigateTo, editId }) {
     setIsSubmitting(true);
     const formData = new FormData(e.target);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/registrations/${editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: formData.get('status') }) });
+      const res = await fetch(`http://localhost:5000/api/registrations/${editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: formData.get('status') }) });
       if (res.ok) { alert('✅ Registration Updated!'); navigateTo('View Registrations'); }
       else alert('❌ Failed to update registration.');
     } catch (err) { alert('Network error'); }
@@ -72,5 +72,3 @@ export default function EditRegistration({ navigateTo, editId }) {
     </div>
   );
 }
-
-

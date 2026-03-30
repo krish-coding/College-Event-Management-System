@@ -12,7 +12,7 @@ export default function HomePage({ navigateTo, setSelectedEvent }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/api/events`)
+    fetch('http://localhost:5000/api/events')
       .then(res => { if (!res.ok) throw new Error('Network error'); return res.json(); })
       .then(data => {
         if (data.success) setFeaturedEvents(data.data.filter(e => e.status === 'Published').slice(0, 3));
@@ -96,5 +96,3 @@ export default function HomePage({ navigateTo, setSelectedEvent }) {
     </div>
   );
 }
-
-

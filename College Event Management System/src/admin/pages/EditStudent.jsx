@@ -8,7 +8,7 @@ export default function EditStudent({ navigateTo, editId }) {
   React.useEffect(() => {
     const fetchStudent = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users`);
+        const res = await fetch('http://localhost:5000/api/users');
         const result = await res.json();
         if (result.success) { const st = result.data.find(u => u._id === editId); if (st) setStudentData(st); }
       } catch (err) { console.error('Error fetching student'); }
@@ -22,7 +22,7 @@ export default function EditStudent({ navigateTo, editId }) {
     const formData = new FormData(e.target);
     const updated = { name: formData.get('name'), email: formData.get('email'), gr: formData.get('gr'), enroll: formData.get('enroll') };
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updated) });
+      const res = await fetch(`http://localhost:5000/api/users/${editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(updated) });
       if (res.ok) { alert('✅ Student Record Updated!'); navigateTo('Manage Students'); }
       else alert('❌ Failed to update student.');
     } catch (err) { alert('Network error'); }
@@ -71,5 +71,3 @@ export default function EditStudent({ navigateTo, editId }) {
     </div>
   );
 }
-
-

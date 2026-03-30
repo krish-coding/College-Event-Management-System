@@ -8,9 +8,9 @@ export default function AdminDashboard({ navigateTo }) {
     const fetchData = async () => {
       try {
         const [eventRes, regRes, userRes] = await Promise.all([
-          fetch(`${import.meta.env.VITE_API_URL}/api/events`),
-          fetch(`${import.meta.env.VITE_API_URL}/api/registrations`),
-          fetch(`${import.meta.env.VITE_API_URL}/api/users`)
+          fetch('http://localhost:5000/api/events'),
+          fetch('http://localhost:5000/api/registrations'),
+          fetch('http://localhost:5000/api/users')
         ]);
         const events = await eventRes.json();
         const regs = await regRes.json();
@@ -80,5 +80,3 @@ export default function AdminDashboard({ navigateTo }) {
     </div>
   );
 }
-
-

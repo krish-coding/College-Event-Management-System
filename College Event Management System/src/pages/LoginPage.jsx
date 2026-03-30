@@ -9,7 +9,7 @@ export default function LoginPage({ navigateTo, setUser }) {
     setIsSubmitting(true);
     const formData = new FormData(e.target);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
+      const res = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: formData.get('email'), password: formData.get('password') })
       });
@@ -65,5 +65,3 @@ export default function LoginPage({ navigateTo, setUser }) {
     </div>
   );
 }
-
-
