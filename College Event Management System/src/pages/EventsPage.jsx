@@ -4,7 +4,7 @@ import { CalendarDays, MapPin, Search, Filter, Loader2 } from 'lucide-react';
 const fallbackEvents = [
   { _id: '1', title: 'TechNova Hackathon 2026', date: '2026-10-15T18:00:00.000Z', time: '18:00', location: 'Main Computer Lab', category: 'Technical', price: 'Free', status: 'Published', description: 'Testing the backend connection', organizer: 'Computer Science Department', totalCapacity: 250, spotsFilled: 184 },
   { _id: '2', title: 'Rhythm & Beats: Cultural Night', date: '2026-11-02T18:00:00.000Z', time: '19:00', location: 'University Auditorium', category: 'Cultural', price: 'Student ID', status: 'Published', description: 'Annual cultural fest with exciting performances.', organizer: 'Cultural Committee', totalCapacity: 500, spotsFilled: 420 },
-  { _id: '3', title: 'RoboWars Championship', date: '2026-12-10T10:00:00.000Z', time: '10:00', location: 'Engineering Block Plaza', category: 'Technical', price: '?10 Entry', status: 'Published', description: 'Battle of the bots.', organizer: 'Robotics Club', totalCapacity: 100, spotsFilled: 45 },
+  { _id: '3', title: 'RoboWars Championship', date: '2026-12-10T10:00:00.000Z', time: '10:00', location: 'Engineering Block Plaza', category: 'Technical', price: '₹10 Entry', status: 'Published', description: 'Battle of the bots.', organizer: 'Robotics Club', totalCapacity: 100, spotsFilled: 45 },
   { _id: '4', title: 'Photography Workshop', date: '2026-10-20T14:00:00.000Z', time: '14:00', location: 'Art Studio Room 302', category: 'Workshop', price: 'Free', status: 'Published', description: 'Learn photography basics.', organizer: 'Photography Club', totalCapacity: 30, spotsFilled: 20 },
 ];
 

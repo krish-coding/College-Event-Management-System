@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CalendarDays, MapPin, Ticket, Users, Info, Image as ImageIcon, DollarSign } from 'lucide-react';
+import { CalendarDays, MapPin, Ticket, Users, Info, Image as ImageIcon, IndianRupee } from 'lucide-react';
 
 export default function RegisterEventPage({ navigateTo, user }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -117,8 +117,8 @@ export default function RegisterEventPage({ navigateTo, user }) {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Ticket Price</label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><DollarSign className="h-5 w-5 text-gray-400" /></div>
-                  <input name="price" type="text" placeholder="Leave blank if Free" className="w-full border border-gray-300 rounded-xl pl-10 pr-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none bg-gray-50 focus:bg-white" />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><IndianRupee className="h-5 w-5 text-gray-400" /></div>
+                  <input name="price" type="text" placeholder="e.g., ₹200 (leave blank if Free)" className="w-full border border-gray-300 rounded-xl pl-10 pr-4 py-3 focus:ring-2 focus:ring-indigo-500 outline-none bg-gray-50 focus:bg-white" />
                 </div>
               </div>
             </div>
